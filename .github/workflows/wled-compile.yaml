@@ -1,0 +1,6 @@
+[env:custom_build]
+extends = env:esp32dev
+build_flags = ${env:esp32dev.build_flags} -D WLED_ENABLE_SIMPLE_UI -D WLED_ENABLE_WEBSOCKETS -D WLED_ENABLE_ADALIGHT -D WLED_ENABLE_PIXART -D LEDPIN=17 -D DEFAULT_LED_COUNT=256 -D CLIENT_SSID='"NETGEAR06"' -D CLIENT_PASS='"pinkcarrot279"' -D WLED_AP_SSID='"Matrix2"' -D WLED_AP_PASS='"wled1234"' -D USERMOD_AUDIOREACTIVE -D USERMOD_AUTO_SAVE -D USERMOD_PING_PONG_CLOCK -D USERMOD_WORDCLOCK -D USERMOD_ANALOG_CLOCK
+lib_deps = 
+  ${env:esp32dev.lib_deps}
+  https://github.com/blazoncek/arduinoFFT.git
