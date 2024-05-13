@@ -30,11 +30,11 @@ jobs:
         cd `cat /tmp/WLEDtemp/wledfoldername`
         npm install
         echo '[env:custom_build]' >>platformio.ini
-        echo 'extends = env:esp32dev' >>platformio.ini
-        echo 'build_flags = ${env:esp32dev.build_flags} -D WLED_ENABLE_SIMPLE_UI -D WLED_ENABLE_WEBSOCKETS -D WLED_ENABLE_ADALIGHT -D WLED_ENABLE_PIXART -D LEDPIN=17 -D DEFAULT_LED_COUNT=256 -D CLIENT_SSID='\''"NETGEAR06"'\'' -D CLIENT_PASS='\''"pinkcarrot279"'\'' -D WLED_AP_SSID='\''"Matrix2"'\'' -D WLED_AP_PASS='\''"wled1234"'\'' -D USERMOD_AUDIOREACTIVE -D USERMOD_AUTO_SAVE -D USERMOD_PING_PONG_CLOCK -D USERMOD_WORDCLOCK -D USERMOD_ANALOG_CLOCK' >>platformio.ini
+        echo 'extends = env:esp32s3dev_16MB_PSRAM_opi' >>platformio.ini
+        echo 'build_flags = ${env:esp32s3dev_16MB_PSRAM_opi.build_flags} -D WLED_DEBUG_IMPROV -D WLED_ENABLE_SIMPLE_UI -D WLED_ENABLE_WEBSOCKETS -D WLED_ENABLE_ADALIGHT -D WLED_ENABLE_PIXART -D LEDPIN=5 -D BTNPIN=42 -D WLED_MAX_USERMODS=8 -D DEFAULT_LED_COUNT=256 -D ABL_MILLIAMPS_DEFAULT=750 -D CLIENT_SSID='\''"Demigorgon"'\'' -D CLIENT_PASS='\''"TheThirteenthDoctor"'\'' -D WLED_AP_SSID='\''"Led Matrix"'\'' -D WLED_AP_PASS='\''"kellysloan"'\'' ${esp32.AR_build_flags} -D USERMOD_AUTO_SAVE -D USERMOD_PING_PONG_CLOCK -D USERMOD_WORDCLOCK -D USERMOD_BATTERY' >>platformio.ini
         echo 'lib_deps = ' >>platformio.ini
-        echo '  ${env:esp32dev.lib_deps}' >>platformio.ini
-        echo '  https://github.com/blazoncek/arduinoFFT.git' >>platformio.ini
+        echo '  ${env:esp32s3dev_16MB_PSRAM_opi.lib_deps}' >>platformio.ini
+        echo '  ${esp32.AR_lib_deps}' >>platformio.ini
         
         pio run -e custom_build || pio run -e custom_build
     - name: Copy Files
